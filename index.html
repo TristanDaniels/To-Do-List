@@ -19,6 +19,13 @@
         <div class="container mb-4">
           <h1 class="p-2 text-center mt-3">To-Do List</h1>
           <div class="p-2 text-center">
+            <button
+              class="btn btn-outline-dark mt-3 mb-3"
+              id="sort-by-name"
+              onclick="SortBy()"
+            >
+              Sort by name
+            </button>
             <form action="">
               <input
                 class="form-control"
@@ -28,9 +35,6 @@
                 placeholder="Add To-Do"
                 required
               />
-              <button class="btn btn-outline-dark mt-3" onclick="SortBy()">
-                Sort by
-              </button>
               <button class="btn btn-outline-dark mt-3" id="add-task-btn">
                 Add
               </button>

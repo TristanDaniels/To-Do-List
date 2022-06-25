@@ -1,4 +1,5 @@
 const text = document.getElementById("add");
+const sortTaskButton = document.getElementById("sort-by-name");
 const addTaskButton = document.getElementById("add-task-btn");
 const saveTaskButton = document.getElementById("save-todo-btn");
 const listBox = document.getElementById("listBox");
@@ -21,12 +22,12 @@ addTaskButton.addEventListener("click", (e) => {
 });
 //Display items on screen
 function displayTodo() {
-  let todo = localStorage.getItem("todo");
-  if (todo === null) {
-    todoArray = [];
-  } else {
-    todoArray = JSON.parse(todo);
-  }
+  // let todo = localStorage.getItem("todo");
+  // if (todo === null) {
+  //   todoArray = [];
+  // } else {
+  //   todoArray = JSON.parse(todo);
+  // }
   let htmlCode = "";
   todoArray.forEach((list, ind) => {
     htmlCode += `<div class='todo d-flex flex-row'>
@@ -48,22 +49,15 @@ function deleteTodo(ind) {
 }
 // Sort by
 function SortBy() {
-  let list, i, switching, b, shouldSwitch;
-  list = document.getElementById("listbox");
-  switching = true;
-  while (switching) {
-    switching = false;
-    b = list.getElementsByTagName("LI");
-    for (i = 0; i < b.length - 1; i++) {
-      shouldSwitch = false;
-      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-        shouldSwitch = true;
-        break;
-      }
+  todoArray.sort((a, b) => {
+    if (a.last_nom < b.last_nom) {
+      return -1;
     }
-    if (shouldSwitch) {
-      b[i].parentNode.insertBefore(b[i + 1], b[i]);
-      switching = true;
+    if (a.last_nom > b.last_nom) {
+      return 1;
     }
-  }
+    return 0;
+  });
+
+  displayTodo();
 }
