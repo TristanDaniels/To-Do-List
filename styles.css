@@ -4,3 +4,21 @@
   justify-content: center;
   align-items: center;
 }
+
+#box {
+  width: 50%;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

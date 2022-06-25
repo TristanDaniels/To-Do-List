@@ -29,9 +29,12 @@ function displayTodo() {
   }
   let htmlCode = "";
   todoArray.forEach((list, ind) => {
-    htmlCode += `<div class='row'>
-   <p id="displayedItems">${list}</p>
-  <button onclick='deleteTodo(${ind})'<i id="close-btn" class="fa-solid fa-circle-xmark"></i></button>
+    htmlCode += `<div class='todo d-flex flex-row'>
+  <li class="d-flex flex-row gap-2" id="${ind}">
+  <input type="checkbox" onclick="itemCompleted(${ind})" class="mt-2 chkItem form-check-input">
+  <p id="displayedItems">${list}</p>
+  <button onclick='deleteTodo(${ind})'<i id="close-btn" class="btn btn-outline-dark mb-3 mt-1 fa-solid fa-circle-xmark"></i></button>
+  <button onclick='sortList(${ind})'<i id="close-btn" class="btn btn-outline-dark mb-3 mt-1 fa-solid fa-circle-xmark"></i></button>
 </div>`;
   });
   listBox.innerHTML = htmlCode;
@@ -43,4 +46,25 @@ function deleteTodo(ind) {
   todoArray.splice(ind, 1);
   localStorage.setItem("todo", JSON.stringify(todoArray));
   displayTodo();
+}
+// Sort by
+function sortList() {
+  let list, i, switching, b, shouldSwitch;
+  list = document.getElementById("ul-list");
+  switching = true;
+  while (switching) {
+    switching = false;
+    b = list.getElementsByTagName("LI");
+    for (i = 0; i < b.length - 1; i++) {
+      shouldSwitch = false;
+      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
 }
