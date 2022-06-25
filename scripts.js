@@ -34,7 +34,6 @@ function displayTodo() {
   <input type="checkbox" onclick="itemCompleted(${ind})" class="mt-2 chkItem form-check-input">
   <p id="displayedItems">${list}</p>
   <button onclick='deleteTodo(${ind})'<i id="close-btn" class="btn btn-outline-dark mb-3 mt-1 fa-solid fa-circle-xmark"></i></button>
-  <button onclick='sortList(${ind})'<i id="close-btn" class="btn btn-outline-dark mb-3 mt-1 fa-solid fa-circle-xmark"></i></button>
 </div>`;
   });
   listBox.innerHTML = htmlCode;
@@ -48,9 +47,9 @@ function deleteTodo(ind) {
   displayTodo();
 }
 // Sort by
-function sortList() {
+function SortBy() {
   let list, i, switching, b, shouldSwitch;
-  list = document.getElementById("ul-list");
+  list = document.getElementById("listbox");
   switching = true;
   while (switching) {
     switching = false;
